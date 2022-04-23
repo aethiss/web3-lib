@@ -1,6 +1,6 @@
 {
   "author": "aethiss",
-  "name": "wallet-connector",
+  "name": "@aethiss/wallet-connector",
   "main": "dist/wallet-connector.js",
   "version": "0.0.1",
   "scripts": {
