@@ -3,6 +3,9 @@
   "name": "@aethiss/wallet-connector",
   "main": "dist/wallet-connector.js",
   "version": "0.0.1",
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "build:browser": "webpack && cp dist/wallet-connector.js examples/browser",
     "build:node": "webpack && cp dist/wallet-connector.js examples/node/ && node examples/node/index.js",
