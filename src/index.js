@@ -11,13 +11,18 @@ import App from "./app/App"
 	if (!document) return;
 	document.addEventListener('DOMContentLoaded', () => {
 		const walletButton = document.getElementById("wallet-connect");
-		if (!walletButton) {
-			console.log("No Wallet Button Found !");
-		} else {
+		const debuggerArea = document.getElementById("wallet-debugger");
+		if (walletButton) {
 			ReactDOM.render(
-				<App />,
+				<App type="wallet-connect" />,
 				walletButton
 			);
+		}
+		if (debuggerArea) {
+			ReactDOM.render(
+				<App type="wallet-debugger" />,
+				debuggerArea
+			)
 		}
 	})
 })()

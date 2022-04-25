@@ -10,17 +10,17 @@ const useMetaMask = () => {
 
 	const accountChangeListener = () => {
 		ethereum.on("accountsChanged", (accounts) => {
-			console.log("account changed");
 			// MetaMask Disconnected
 			if (!accounts.length) {
 				setAccount(null);
 				setNetwork(null);
+			} else {
+				setAccount(accounts[0])
 			}
 		});
 	}
 
 	const connectMetaMask = async () => {
-		console.log("connectMetaMask")
 		if (ethereum && ethereum.isMetaMask) {
 			try {
 				const accounts = await ethereum.request({
@@ -43,7 +43,6 @@ const useMetaMask = () => {
 	useEffect(() => {
 		if (ethereum) {
 			(async function () {
-				console.log("inside function")
 				const web3Instance = new Web3(ethereum);
 				const accounts = await web3Instance.eth.getAccounts();
 				const network = await web3Instance.eth.getChainId();
@@ -52,7 +51,7 @@ const useMetaMask = () => {
 			})()
 			accountChangeListener();
 		}
-	}, [])
+	}, [account])
 
 	return { account, network, connectMetaMask }
 }
